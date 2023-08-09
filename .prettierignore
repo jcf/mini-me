@@ -1,0 +1,8 @@
+**/dist
+**/node_modules
+.astro/
+.github/
+/.devenv/
+/.direnv/
+/spotlight
+pnpm-lock.yaml

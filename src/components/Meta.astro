@@ -1,0 +1,55 @@
+---
+interface Props {
+  description: string;
+  image?: {src: string};
+  ogType?: string;
+  title: string;
+  url?: string;
+}
+
+import { name as siteName } from '../stores/site';
+
+import icon16 from '../assets/icons/favicon-16x16.png';
+import icon32 from '../assets/icons/favicon-32x32.png';
+import icon180 from '../assets/icons/apple-touch-icon.png';
+import icon512 from '../assets/icons/android-chrome-512x512.png';
+
+const {
+  description,
+  image,
+  ogType = "article",
+  title,
+  url,
+} = Astro.props;
+
+const at = '@jamesconroyfinn';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const imageURL = new URL((image || icon512).src, Astro.site);
+---
+
+<title>{title} · jcf</title>
+
+<link rel="canonical" href={url || canonicalURL} />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<meta name="author" content="James Conroy-Finn">
+<meta name="description" content={description} />
+
+<meta property="og:type" content={ogType} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageURL} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:title" content={title} />
+<meta property="og:url" content={url || canonicalURL} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:author" content={at} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageURL} />
+<meta name="twitter:site" content={at} />
+<meta name="twitter:title" content={title} />
+
+<link rel="apple-touch-icon" sizes="180x180" href={icon180.src}>
+<link rel="icon" type="image/png" sizes="32x32" href={icon32.src}>
+<link rel="icon" type="image/png" sizes="16x16" href={icon16.src}>
+<link rel="manifest" href="/manifest.json">

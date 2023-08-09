@@ -1,0 +1,43 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+import { Variant } from '../types/layout';
+
+interface Props extends HTMLAttributes<'header'> {
+  variant?: Variant;
+}
+
+import { Image } from 'astro:assets';
+
+import { navigation } from '../stores/site';
+
+import logo from '../assets/icons/android-chrome-512x512.png';
+
+const { variant } = Astro.props;
+
+const containerClasses = [
+  "mx-auto",
+  variant === "narrow" ? "max-w-2xl" : "max-w-7xl",
+  "py-6 px-6 lg:px-8",
+];
+---
+
+<header>
+  <div class:list={containerClasses}>
+    <nav class="flex items-center">
+      <a href="/" class="inline-flex gap-x-2 items-center mr-6">
+        <span class="sr-only">James Conroy-Finn</span>
+        <Image
+          class="h-12 w-12 rounded-full"
+          height={84}
+          src={logo}
+          alt="" />
+      </a>
+      <div class="flex gap-x-4">
+      {navigation.map(({ href, name }) => (
+      <a href={href} class="font-semibold text-neutral-600 dark:text-neutral-200 text-sm">{name}</a>
+      ))}
+      </div>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,120 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+import { Variant } from '../types/layout';
+
+interface Props extends HTMLAttributes<'footer'> {
+  variant?: Variant;
+}
+
+import {
+  faDribbble,
+  faGithub,
+  faInstagram,
+  faLinkedin,
+  faMastodon,
+  faTwitter,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+const { variant } = Astro.props;
+
+const containerClasses = [
+  "mx-auto",
+  variant === "narrow" ? "max-w-2xl" : "max-w-7xl",
+  "py-12 px-6 lg:px-8 md:flex md:items-center md:justify-between",
+];
+---
+
+<footer class="bg-white dark:bg-black">
+  <div class:list={containerClasses}>
+    <div class="flex justify-center space-x-6 md:order-2">
+      <ul role="list" class="flex gap-x-6">
+        <li>
+          <a
+            title="Find me on Dribbble"
+            href="https://dribbble.com/jcf"
+            class="text-neutral-400 hover:text-neutral-500 dark:hover:text-neutral-300"
+          >
+            <span class="sr-only">Dribbble</span>
+            <FontAwesomeIcon className="h-5 w-5" icon={faDribbble} />
+          </a>
+        </li>
+
+        <li>
+          <a
+            title="Find me on GitHub"
+            href="https://github.com/jcf"
+            class="text-neutral-400 hover:text-neutral-500 dark:hover:text-neutral-300"
+          >
+            <span class="sr-only">GitHub</span>
+            <FontAwesomeIcon className="h-5 w-5" icon={faGithub} />
+          </a>
+        </li>
+
+        <li>
+          <a
+            title="Find me on Instagram"
+            href="https://www.instagram.com/jcf/"
+            class="text-neutral-400 hover:text-neutral-500 dark:hover:text-neutral-300"
+          >
+            <span class="sr-only">Instagram</span>
+            <FontAwesomeIcon className="h-5 w-5" icon={faInstagram} />
+          </a>
+        </li>
+
+        <li>
+          <a
+            title="Find me on LinkedIn"
+            href="https://www.linkedin.com/in/jamesconroyfinn"
+            class="text-neutral-400 hover:text-neutral-500 dark:hover:text-neutral-300"
+          >
+            <span class="sr-only">LinkedIn</span>
+            <FontAwesomeIcon className="h-5 w-5" icon={faLinkedin} />
+          </a>
+        </li>
+
+        <li>
+          <a
+            title="Find me on Mastodon"
+            href="https://mastodon.social/@jcf"
+            rel="me"
+            class="text-neutral-400 hover:text-neutral-500 dark:hover:text-neutral-300"
+          >
+            <span class="sr-only">Mastodon</span>
+            <FontAwesomeIcon className="h-5 w-5" icon={faMastodon} />
+          </a>
+        </li>
+
+        <li>
+          <a
+            title="Find me on Twitter"
+            href="https://twitter.com/jamesconroyfinn"
+            class="text-neutral-400 hover:text-neutral-500 dark:hover:text-neutral-300"
+          >
+            <span class="sr-only">Twitter</span>
+            <FontAwesomeIcon className="h-5 w-5" icon={faTwitter} />
+          </a>
+        </li>
+
+        <li>
+          <a
+            title="Find me on YouTube"
+            href="https://youtube.com/jamesconroyfinn"
+            class="text-neutral-400 hover:text-neutral-500 dark:hover:text-neutral-300"
+          >
+            <span class="sr-only">YouTube</span>
+            <FontAwesomeIcon className="h-5 w-5" icon={faYoutube} />
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-8 md:order-1 md:mt-0">
+      <p class="text-center text-xs leading-5 text-neutral-500">
+        Built by a human.
+      </p>
+    </div>
+  </div>
+</footer>

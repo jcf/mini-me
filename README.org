@@ -1,0 +1,9 @@
+Minimal reproduction of spiky CPU load caused by Firefox executing a regular
+expression on top of an Astro website, running in development mode.
+
+Firefox hangs executing the regular expression inside of [[https://hg.mozilla.org/mozilla-central/file/tip/devtools/server/actors/utils/style-utils.js#l197][=getTextAtLineColumn=]].
+
+Bug report: https://bugzilla.mozilla.org/show_bug.cgi?id=1847440
+
+Extracted from https://jamesconroyfinn.com/, which does not suffer from the same
+issue.

@@ -1,0 +1,13 @@
+.astro/
+.env
+.env.production
+.vercel
+/.devenv/
+/.direnv/
+devenv.local.nix
+dist/
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*

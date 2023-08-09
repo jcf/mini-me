@@ -1,0 +1,26 @@
+---
+interface Props {
+  description: string;
+  image?: {src: string};
+  title: string;
+  url?: string;
+}
+
+import '@fontsource-variable/inter/standard.css';
+import '../assets/katex/katex.css';
+
+import Meta from '../components/Meta.astro';
+import Plausible from '../components/Plausible.astro';
+---
+
+<html lang="en-GB" class="min-h-screen antialiased">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <Meta {...Astro.props} />
+    {import.meta.env.PROD === true && <Plausible />}
+  </head>
+  <body class="min-h-screen bg-white dark:bg-black">
+    <slot />
+  </body>
+</html>
